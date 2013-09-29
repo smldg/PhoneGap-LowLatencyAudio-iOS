@@ -36,8 +36,8 @@ NSString* RESTRICTED = @"ACTION RESTRICTED FOR FX AUDIO";
     NSString* callbackID = command.callbackId;
 //    [callbackID retain];
     
-//    NSString *audioID = [command.arguments objectAtIndex:0];
-    [audioID retain];
+    NSString *audioID = [command.arguments objectAtIndex:0];
+//    [audioID retain];
     
     NSString *assetPath = [command.arguments objectAtIndex:1];
 //    [assetPath retain];
@@ -61,7 +61,7 @@ NSString* RESTRICTED = @"ACTION RESTRICTED FOR FX AUDIO";
         {
             NSURL *pathURL = [NSURL fileURLWithPath : path];
             SystemSoundID soundID;
-            AudioServicesCreateSystemSoundID((CFURLRef) pathURL, & soundID);
+            AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, & soundID);
             [audioMapping setObject:[NSNumber numberWithInt:soundID]  forKey: audioID];
             
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: CONTENT_LOAD_REQUESTED];
