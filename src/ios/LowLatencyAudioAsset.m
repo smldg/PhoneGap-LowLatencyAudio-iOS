@@ -28,7 +28,7 @@
     if(self) 
     {
         voices = [[NSMutableArray alloc] init];  
-        [voices retain];
+//        [voices retain];
         
         NSURL *pathURL = [NSURL fileURLWithPath : path];
         
@@ -36,8 +36,8 @@
         {
             AVAudioPlayer *player;
             player = [[AVAudioPlayer alloc] initWithContentsOfURL:pathURL error: NULL];
-            [player retain];
-            [player prepareToPlay];   
+//            [player retain];
+            [player prepareToPlay];
             [voices addObject:player];
         }
         
@@ -82,9 +82,9 @@
     for (int x = 0; x < [voices count]; x++) 
     {
         AVAudioPlayer * player = [voices objectAtIndex:x];
-        [player release];
+//        [player release];
     }
-    [voices release];
+//    [voices release];
 }
 
 @end
